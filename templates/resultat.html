@@ -14,7 +14,7 @@
 
 <body>
     <figure class="text-center">
-        <a href="home.html"><h1>Citations Françaises</h1></a>
+        <a href="/home"><h1>Citations Françaises</h1></a>
         <ul></ul>
         <h5><p>Grâce aux mots clés, nom de l'auteur et thème, trouvez sur ce site les <strong>citations françaises</strong> qui vous conviennent.</p></h5>
     </figure>
@@ -64,17 +64,15 @@
         <!--Search-->
         <ul class="navbar-nav me-auto mb-2 mb-0"></ul>
         <form class="d-flex">
-            <!-- Button for the specific search -->
+
+        <!-- Button for the specific search -->
         <div class="btn-group">
-            <a href="Index.html">
-                <button type="button" class="btn btn-primary" href="Index.html">
-                    Recherche spécifique
-                </button>
-            </a>
+            <a class="btn btn-primary" href="/index" role="button">Recherche avancée</a>
         </div>
         </form>
     </nav>
 
+        <!-- Printing quotes -->
         {%for i in quotes %}
 
             {% if Source[loop.index0]|string=="nan"%}
@@ -98,6 +96,16 @@
             {%endif%}
 
         {%endfor%}
+
+    <!-- Pagination -->
+
+        <!-- ¡previous page! -->
+    {% if quotes.has_prev %}
+    <li>
+        <a href="{{ url_for('quotes', page=quotes.prev_num) }}">Previous</a>
+    </li>
+    {% endif %}
+
 
     <nav aria-label="Page navigation">
       <ul class="pagination justify-content-center">
